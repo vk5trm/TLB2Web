@@ -1,10 +1,8 @@
-The Link Box Node or
-The Bridge Conference Server
-Management Web CGI
-This software permits you to be able to control a ìThe Link Box Nodeî or The Bridge Conference Server from a standard web page
-.It is an add on to ìThe Link Box RF nodeî and ìThe Bridge conference serverî written by Skip WB6YMH
+The Link Box Node or The Bridge Conference Server Management Web CGI
+This software permits you to be able to control a ‚ÄúThe Link Box Node‚Äù or The Bridge Conference Server from a standard web page
+.It is an add on to ‚ÄúThe Link Box RF node‚Äù and ‚ÄúThe Bridge conference server‚Äù written by Skip WB6YMH
 It also includes the ability to use the Text chat over the Echolink System. 
-Optional Module 1 ñ Email from Echolink Text Box
+Optional Module 1 ‚Äì Email from Echolink Text Box
 If there is a problem with your node the sysop can be emailed directly from the text box on echolink by using the format
 **(node-call) **(message) i.e. **VK5TRM-L** This is a test message
 The callsign must be all upper case, include the -L or -R and you can't use the .quote command
@@ -48,6 +46,7 @@ Either Add the following lines to your eventscript file or if you don't have one
 You may need to change you file paths if you computer has the files in a different place
 
 ----snip--------
+
 if [ "$1" = "chat" ]; then
 echo "$2 <br>" >> /var/www/cgi-bin/chat.txt
 elif [ "$1" = "sent_chat" ]; then
@@ -63,7 +62,9 @@ Nodemgmt.cgi with Email from Echolink Text Box enabled or Email from Echolink Te
 Copy the sendEmail file to your /usr/bin Directory and set the permissions to RWXR-XR-X or 755 using chmod 755 sendEmail
 Either Add the following lines to your eventscript file or if you don't have one create a file called eventscript in /usr/local/bin/ and enable it within your tlb.conf file
 You may need to change you file paths if you computer has the files in a different place
+
 ----snip--------
+
 if [ "$1" = "chat" ]; then
 nodecall=`cat /usr/local/etc/tlb.conf | /bin/grep "ConferenceCall = " | cut -d' ' -f3`
 nodeEmail=`cat /usr/local/etc/tlb.conf | /bin/grep "EmailAdr = " | cut -d' ' -f3`
@@ -84,11 +85,13 @@ fi
 /bin/rm /tmp/chat.txt
 
 ----snip-------
+
 All setups :
 Apache web server setup
 Set up Apache so the the root directory is the cgi-bin directory or set up a named virtual host container to your cgi-bin directory and point a sub domain to the virtual named host. The information on how to do this is here on the Apache Website
 Use Basic Authentication on the webpage. The information on how to do that is on the Apache Website. Use callsigns as usernames as the login name is what is used on the sent text chat callsign from the website and if no user name is present it goes into demo mode and all control buttons are disabled automaticly. This is to protect the network from non- Amateurs. It is up to you to make sure no non-Amateurs gain access to the Echolink system though your node.
 Edit the top Installation Default Settings section of nodemgmt.cgi and chat.cgi file 
+
 ----snip-------
 
 #-------------------------------------------------------------------
@@ -103,8 +106,10 @@ commport=/dev/ttyS1 # Comm Port for Temperature sensor & Radio control - set for
 #-------------------------------------------------------------------
 
 ----snip-------
+
 Nodemgmt.cgi with Email from Echolink Text Box enabled 
 Set up your email SMTP server in the top section of the SendEmail Script in the ##Network section of the script. You should only need to set you SMTP server and port. Be careful not to delete any of the , and '
+
 ----snip-------
 
 ## Network
@@ -116,17 +121,22 @@ Set up your email SMTP server in the top section of the SendEmail Script in the 
 "tls_server" => 0, ## If TLS is supported by the remote SMTP server
 
 ----snip-------
+
 Also edit the SMTP user name and password in the SendEmail script further down
+
 ----snip-------
+
 ## eSMTP
 "username" => '', ## Username used in SMTP Auth (set your SMPT server user name here between the ' ')
 "password" => '', ## Password used in SMTP Auth (set you SMPT server password here between the ' ')
 "tls" => 'auto', ## Enable or disable TLS support. Options: auto, yes, no
 
 ----snip-------
+
 Radio Control (radiocontrol.php)
 Edit radiocontrol.php if you want to use it and have the hardware for it. Set port device, port speed, data bits, stopbit, and flow control according to the manual that came with the hardware 
 This needs to be done in 2 places of the script
+
 ----snip-------
 
 $serial->deviceSet("/dev/ttyUSB0");
@@ -137,13 +147,16 @@ $serial->confParity("none");
 $serial->confCharacterLength(8);
 $serial->confStopBits(1);
 $serial->confFlowControl("none");
+
 ----snip-------
+
 All setups:
 Log Viewer (logviewer.cgi)
 Edit logviewer.cgi and set the path to your TLB log file.
 ----snip-------
 
 $LOG = "/home/tlb/tlb.log"
+
 ----snip-------
 Point you web browser to http://(server name and cgi-bin dir path)/nodemgmt.cgi
 
@@ -155,25 +168,25 @@ The status of your commands will be shown on the panel just above the station li
 Note: This panel was designed for a screen resolution of 1024x768. 
 The Station List 
 The call signs are highlighted with color to give you an indication of each station's status. Here are the details: 
-    ï Normal: Just a normal Echolink station, nothing special about it. It may be a repeater, an RF link or a user on a PC. 
-    ï Admin: The station is logged in to this conference server as an Administrator or a Sysop. 
-    ï Conf: The station is itself a conference, either a TBD server, like this one, or an Echolink station with multiple connections. 
-    ï Perm: A permanent connection is the result of an outbound connect request. If the station's connection times out, the conference will attempt to re-connect. 
-    ï Muted: The station is muted, it will hear any activity on the conference but is not able to transmit. 
-    ï Kicked: The station has been disconnected by the conference. 
-    ï Monitor: The station can transmit to the conference, but the conference will not transmit to the station. 
-    ï Lurking: The station invoked the lurk command to remove his call sign from the station lists on the Echolink clients, but is still connected and can participate in the conference as if it were a normal user. 
-    ï Talking: The station is currently transmitting to the conference. 
-    ï Playing: The station is playing a file; either listening to a bulletin or using the .test command to play back its own audio. If the conference is set up to play a "welcome"' echo "message to connecting stations, they'll show up in pink momentarily" just after they connect. 
+    ‚Ä¢ Normal: Just a normal Echolink station, nothing special about it. It may be a repeater, an RF link or a user on a PC. 
+    ‚Ä¢ Admin: The station is logged in to this conference server as an Administrator or a Sysop. 
+    ‚Ä¢ Conf: The station is itself a conference, either a TBD server, like this one, or an Echolink station with multiple connections. 
+    ‚Ä¢ Perm: A permanent connection is the result of an outbound connect request. If the station's connection times out, the conference will attempt to re-connect. 
+    ‚Ä¢ Muted: The station is muted, it will hear any activity on the conference but is not able to transmit. 
+    ‚Ä¢ Kicked: The station has been disconnected by the conference. 
+    ‚Ä¢ Monitor: The station can transmit to the conference, but the conference will not transmit to the station. 
+    ‚Ä¢ Lurking: The station invoked the lurk command to remove his call sign from the station lists on the Echolink clients, but is still connected and can participate in the conference as if it were a normal user. 
+    ‚Ä¢ Talking: The station is currently transmitting to the conference. 
+    ‚Ä¢ Playing: The station is playing a file; either listening to a bulletin or using the .test command to play back its own audio. If the conference is set up to play a "welcome"' echo "message to connecting stations, they'll show up in pink momentarily" just after they connect. 
 What the Control Buttons do 
-    ï Disc: Disconnects a station from the conference. The station can re-connect back in if it wants to. 
-    ï Disc/Ban: Disconnects a station and bans it so it cannot re-connect. Bans can only be reversed by the conference 
-    ï Mute: Stops a station from transmitting to the conference. The station can disconnect and re-connect to un-mute itself. 
-    ï Mute-P: Mutes a station persistently, that is, the station will stay muted even if it disconnects and re-connects. 
-    ï Monitor: The opposite of "Mute". The conference will receive what the station transmits, but cannot talk back to that station. This is useful for monitoring nets and space shuttle missions. If a repeater station needs to disconnect, it will not disrupt the rest of the net. 
-    ï Reset: This function cancels the "Mute" and "Monitor" functions, and also de-lurks (un-hides) a station which is lurking (connected, but not appearing in the Echolink echo "clients' station lists)." echo "
-    ï About: Shows the station operator's information. 
-    ï QRZ: Performs a callsign lookup on the QRZ database. The QRZ information will pop up in a separate window. The conference administrator can disable QRZ lookups. 
+    ‚Ä¢ Disc: Disconnects a station from the conference. The station can re-connect back in if it wants to. 
+    ‚Ä¢ Disc/Ban: Disconnects a station and bans it so it cannot re-connect. Bans can only be reversed by the conference 
+    ‚Ä¢ Mute: Stops a station from transmitting to the conference. The station can disconnect and re-connect to un-mute itself. 
+    ‚Ä¢ Mute-P: Mutes a station persistently, that is, the station will stay muted even if it disconnects and re-connects. 
+    ‚Ä¢ Monitor: The opposite of "Mute". The conference will receive what the station transmits, but cannot talk back to that station. This is useful for monitoring nets and space shuttle missions. If a repeater station needs to disconnect, it will not disrupt the rest of the net. 
+    ‚Ä¢ Reset: This function cancels the "Mute" and "Monitor" functions, and also de-lurks (un-hides) a station which is lurking (connected, but not appearing in the Echolink echo "clients' station lists)." echo "
+    ‚Ä¢ About: Shows the station operator's information. 
+    ‚Ä¢ QRZ: Performs a callsign lookup on the QRZ database. The QRZ information will pop up in a separate window. The conference administrator can disable QRZ lookups. 
 Outbound Connections 
 You may connect a station to the conference by typing the station's" call sign into the text field following "Connect a station:"' and clicking the "Enter" button. 
 If the station does not immediately show up in the station list, it is either off-line or not accepting connections. 
@@ -214,7 +227,7 @@ sendEmail - Brandon Zehm <caspian[at]dotconf.net>
 Distributed under the terms of the
 GNU General Public License
 
-php serial by RÈmy Sanchez <thenux[at]gmail.com>
+php serial by R√©my Sanchez <thenux[at]gmail.com>
 Distributed under the terms of the
 GNU General Public License
 
