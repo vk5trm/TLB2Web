@@ -1,0 +1,86 @@
+<html>
+	<head>
+	<title>EchoLink Chat</title>
+	<style type="text/css">
+body 			{ padding-left:1px; BACKGROUND="#e6e6e6" ; font-family:arial;}
+input, textarea 	{ font-family: arial; color:white; background:#57767F; font-size: 14px; }
+#content 		{ width:550px; text-align:left; margin-left:0px; }
+#chatwindow 		{ border:0px solid #aaaaaa; padding:0px; background:#232D2F; color:white;  width:575px; height:375; overflow: auto; font-family:courier new;}
+</style> 
+	</head>
+		
+		
+		
+	 <div id="content"> 
+	 <p id="chatwindow"> </p> 
+<!--			<textarea id="chatwindow"></textarea>
+-->
+       <br>	
+ </div> 
+
+	</body>
+</html>
+
+<script type="text/javascript">
+/****************************************************************
+ * Most Simple Ajax Chat Script (www.linuxuser.at)		*
+ * Version: 3.1							*
+ * 								*
+ * Author: Chris (chris[at]linuxuser.at)			*
+ *                                                              *
+ * Modifed by Robert VK5TRM (vk5trm[at]gmail.com		*
+ *                                                              * 
+ * Licence: GPLv2						*
+ ****************************************************************/
+ 
+/* Settings you might want to define */
+	var waittime=800;		
+
+/* Internal Variables & Stuff */
+	document.getElementById("chatwindow").innerHTML = "loading...";
+
+	var xmlhttp = false;
+	var xmlhttp2 = false;
+
+/* Request for Reading the Chat Content */
+function ajax_read(url) {
+	if(window.XMLHttpRequest){
+		xmlhttp=new XMLHttpRequest();
+		if(xmlhttp.overrideMimeType){
+			xmlhttp.overrideMimeType('text/xml');
+		}
+	} else if(window.ActiveXObject){
+		try{
+			xmlhttp=new ActiveXObject("Msxml2.XMLHTTP");
+		} catch(e) {
+			try{
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			} catch(e){
+			}
+		}
+	}
+
+	if(!xmlhttp) {
+		alert('Giving up :( Cannot create an XMLHTTP instance');
+		return false;
+	}
+
+	xmlhttp.onreadystatechange = function() {
+	if (xmlhttp.readyState==4) {
+                 var objDiv = document.getElementById("chatwindow"); objDiv.scrollTop = objDiv.scrollHeight;
+		document.getElementById("chatwindow").innerHTML = xmlhttp.responseText;
+		zeit = new Date(); 
+		ms = (zeit.getHours() * 24 * 60 * 1000) + (zeit.getMinutes() * 60 * 1000) + (zeit.getSeconds() * 1000) + zeit.getMilliseconds(); 
+		intUpdate = setTimeout("ajax_read('chat.txt?x=" + ms + "')", waittime)
+		}
+	}
+
+	xmlhttp.open('GET',url,true);
+	xmlhttp.send(null);
+}
+
+/* Start the Requests! ;) */
+var intUpdate = setTimeout("ajax_read('chat.txt')", waittime);
+
+</script>
+

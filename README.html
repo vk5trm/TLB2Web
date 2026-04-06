@@ -1,0 +1,522 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.2  (Win32)">
+	<META NAME="CREATED" CONTENT="0;0">
+	<META NAME="CHANGEDBY" CONTENT="Robert Middelmann">
+	<META NAME="CHANGED" CONTENT="20101111;18283100">
+	<META NAME="CHANGEDBY" CONTENT="Robert Middelmann">
+	<META NAME="CHANGEDBY" CONTENT="Robert Middelmann">
+	<META NAME="CHANGEDBY" CONTENT="Robert Middelmann">
+	<META NAME="CHANGEDBY" CONTENT="Robert Middelmann">
+	<META NAME="CHANGEDBY" CONTENT="Robert Middelmann">
+	<META NAME="CHANGEDBY" CONTENT="Robert Middelmann">
+	<META NAME="CHANGEDBY" CONTENT="Robert Middelmann">
+	<META NAME="CHANGEDBY" CONTENT="Robert Middelmann">
+	<META NAME="CHANGEDBY" CONTENT="Robert Middelmann">
+	<META NAME="CHANGEDBY" CONTENT="Robert Middelmann">
+	<META NAME="CHANGEDBY" CONTENT="Robert Middelmann">
+</HEAD>
+<BODY LANG="en-AU" BACKGROUND="fuzzy-lightgrey.jpg" DIR="LTR">
+<H1 ALIGN=CENTER><FONT FACE="Arial Black, sans-serif"><FONT SIZE=7 STYLE="font-size: 32pt">The
+Link Box Node or</FONT></FONT></H1>
+<H1 ALIGN=CENTER><FONT FACE="Arial Black, sans-serif"><FONT SIZE=7 STYLE="font-size: 32pt">The
+Bridge Conference Server</FONT></FONT></H1>
+<H1 ALIGN=CENTER><FONT FACE="Arial Black, sans-serif"><FONT SIZE=7 STYLE="font-size: 32pt">Management
+Web CGI</FONT></FONT></H1>
+<P ALIGN=CENTER>This software permits you to be able to control a
+&ldquo;<A HREF="http://sourceforge.net/apps/mediawiki/cqinet/index.php?title=Linkbox-url" NAME="The Link Box">The
+Link Box Node</A>&rdquo; or <A HREF="http://sourceforge.net/apps/mediawiki/cqinet/index.php?title=Thebridge">The
+Bridge Conference Server</A> from a standard web page</P>
+<P ALIGN=CENTER>.It is an add on to <A HREF="http://sourceforge.net/apps/mediawiki/cqinet/index.php?title=Linkbox-url" NAME="&ldquo;The Link Box&rdquo;">&ldquo;The
+Link Box RF node&rdquo;</A> and &ldquo;<A HREF="http://sourceforge.net/apps/mediawiki/cqinet/index.php?title=Thebridge">The
+Bridge conference server&rdquo; </A>written by Skip WB6YMH</P>
+<P ALIGN=CENTER>It also includes the ability to use the Text chat
+over the Echolink System. 
+</P>
+<P ALIGN=CENTER><FONT SIZE=4><B>Optional Module 1 &ndash; Email from
+Echolink Text Box</B></FONT></P>
+<P ALIGN=CENTER>If there is a problem with your node the sysop can be
+emailed directly from the text box on echolink by using the format</P>
+<P ALIGN=CENTER>**(node-call) **(message) i.e. **VK5TRM-L** This is a
+test message</P>
+<P ALIGN=CENTER>The callsign must be all upper case, include the -L
+or -R and you can't use the .quote command</P>
+<P ALIGN=CENTER>This is comparable with <A HREF="http://www.echoaddons.com/">Peter
+EI4JR's Echo Producer program and his other Windows Echolink add ons</A></P>
+<P ALIGN=CENTER><FONT SIZE=4><B>Optional Module 2 Temperature Sensor/Radio Control </B></FONT>
+</P>
+<P ALIGN=CENTER>I have also added the ability to get temperature
+readings using a PIC based serial port device It gives you inside temperature on the page and
+ if there is hardware setup the ability to control the radio on/off and channel change from the webpage.</P>
+<P ALIGN=CENTER>The kit is available from <A HREF="http://www.kitsrus.com/">kitsrus.com</A>.
+worldwide</P>
+<P ALIGN=CENTER>I am using the K190 Which is available from one of
+there distributors here in Australia <A HREF="http://ozitronics.com/">Oztronics</A></P>
+<P ALIGN=CENTER><BR><BR>
+</P>
+<P ALIGN=CENTER><BR><BR>
+</P>
+<P ALIGN=CENTER><BR><BR>
+</P>
+<H1><BR><BR>
+</H1>
+<H1><FONT FACE="Times New Roman, serif">Requirements:</FONT></H1>
+<H1 ALIGN=CENTER><BR><BR>
+</H1>
+<P>A working TLB node with the Command Port and event script enabled
+within the tlb.conf</P>
+<P>A working Apache Web server with PHP,Perl enabled on the same
+computer with the CGI execution enabled and Basic Authentication also
+enabled. 
+</P>
+<P ALIGN=LEFT><FONT SIZE=6><B>Install</B></FONT></P>
+<P ALIGN=CENTER><FONT SIZE=4><B>All setups:</B></FONT></P>
+<P>Download the TLB to Web CGI and put it into a temp directory on the Linux computer.</P>
+<P>Issue the command &quot;tar xzf TLBtoWeb.tgz&quot;to uncompress
+the files.</P>
+<P>Copy these files into your cgi-bin enabled directory (on my Apache
+server it is /var/www/cgi-bin)</P>
+<P>and set permissions as follows using chmod 
+</P>
+<P><BR><BR>
+</P>
+<P ALIGN=CENTER>chat.html (RW-R--R-- or 644)</P>
+<P ALIGN=CENTER>nodemgmt.cgi (RWXR-XR-X or 755)</P>
+<P ALIGN=CENTER>chat.txt (RW-RW-RW- or 666)</P>
+<P ALIGN=CENTER>fuzzy-lightgrey.jpg (RW--R--R-- or 644)</P>
+<P ALIGN=CENTER>chat.cgi (RWXR-XR-X or 755) 
+<P ALIGN=CENTER>logviewer.cgi (RWXR-XR-X or 755)
+<P ALIGN=CENTER>htpasswd.cgi (RWXR-XR-X or 755) 
+<P ALIGN=CENTER>index.html (RW-R--R-- or 644)  
+<P ALIGN=CENTER>README.html (RW-R--R-- or 644)  
+</P>
+<P ALIGN=CENTER><BR><BR>
+</P>
+<P ALIGN=CENTER><FONT SIZE=4><B>Extra files required for Radio Control
+<FONT SIZE=3><I>(also put in the CGI-Bin Dir)</I></FONT></B></FONT></P>
+<P ALIGN=CENTER>php_serial.class.php (RW-R--R-- or 644)</P>
+<P ALIGN=CENTER>radiocontrol.php (RW-R--R-- or 644)</P>
+<P ALIGN=CENTER>channeldata.html (RW-R--R-- or 644)</P>
+<P ALIGN=LEFT><FONT SIZE=6><B>Configuration</B></FONT></P>
+<P ALIGN=CENTER><FONT SIZE=4><B>BASIC SETUP: or basic setup with only
+Temperature Sensor/Radio control</B></FONT></P>
+<P>Either Add the following lines to your eventscript file or if you
+don't have one create a file called eventscript in /usr/local/bin/
+and enable it within your tlb.conf file</P>
+<P>You may need to change you file paths if you computer has the
+files in a different place</P>
+<P><BR><BR>
+</P>
+<P>----snip--------</P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">if
+[ &quot;$1&quot; = &quot;chat&quot; ]; then</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">echo
+&quot;$2 &lt;br&gt;&quot; &gt;&gt; /var/www/cgi-bin/chat.txt</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">elif
+[ &quot;$1&quot; = &quot;sent_chat&quot; ]; then</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">echo
+&quot;$2 &lt;br&gt;&quot; &gt;&gt; /var/www/cgi-bin/chat.txt</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">fi</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">/usr/bin/tail
+-n 21 /var/www/cgi-bin/chat.txt &gt; /tmp/chat.txt</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">/bin/cp
+/tmp/chat.txt /var/www/cgi-bin/chat.txt</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">/bin/rm
+/tmp/chat.txt</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P>----snip-------</P>
+<P><BR><BR>
+</P>
+<P ALIGN=CENTER><FONT SIZE=4><B>Nodemgmt.cgi with Email from Echolink
+Text Box enabled or Email from Echolink Text Box and Temperature
+Sensor/Radio control</B></FONT></P>
+<P>Copy the sendEmail file to your /usr/bin Directory and set the
+permissions to RWXR-XR-X or 755 using chmod 755 sendEmail</P>
+<P>Either Add the following lines to your eventscript file or if you
+don't have one create a file called eventscript in /usr/local/bin/
+and enable it within your tlb.conf file</P>
+<P>You may need to change you file paths if you computer has the
+files in a different place</P>
+<P>----snip--------</P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">if
+[ &quot;$1&quot; = &quot;chat&quot; ]; then</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">nodecall=`cat
+/usr/local/etc/tlb.conf | /bin/grep &quot;ConferenceCall = &quot; |
+cut -d' ' -f3`</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">nodeEmail=`cat
+/usr/local/etc/tlb.conf | /bin/grep &quot;EmailAdr = &quot; | cut -d'
+' -f3`</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">IFS=$'**'
+</FONT></FONT>
+</P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">/bin/echo
+&quot;$2&quot; | /bin/grep -w &quot;$nodecall&quot;</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">if
+[ $? -eq 0 ]; then</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">/usr/bin/sendEmail
+-f &quot;$nodeEmail&quot; -t &quot;$nodeEmail&quot; -u Message from
+&quot;$nodecall&quot; -m &quot;$2&quot; </FONT></FONT>
+</P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">/usr/local/bin/tlbcmd
+message &quot;$nodecall&gt;Message recieved and Emailed to sysop&quot;</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">else</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">echo
+&quot;$2 &lt;br&gt;&quot; &gt;&gt; /var/www/cgi-bin/chat.txt</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">fi</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">IFS=$'
+\t\n' </FONT></FONT>
+</P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">elif
+[ &quot;$1&quot; = &quot;sent_chat&quot; ]; then</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">echo
+&quot;$2 &lt;br&gt;&quot; &gt;&gt; /var/www/cgi-bin/chat.txt</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">fi</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">/usr/bin/tail
+-n 21 /var/www/cgi-bin/chat.txt &gt; /tmp/chat.txt</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">/bin/cp
+/tmp/chat.txt /var/www/cgi-bin/chat.txt</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">/bin/rm
+/tmp/chat.txt</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P>----snip-------</P>
+<P ALIGN=CENTER><FONT SIZE=4><B>All setups :</B></FONT></P>
+<P ALIGN=CENTER><FONT SIZE=4><B>Apache web server setup</B></FONT></P>
+<P ALIGN=LEFT><FONT SIZE=3><SPAN STYLE="font-weight: normal">Set up
+Apache so the the root directory is the cgi-bin directory or set up a
+named virtual host container to your cgi-bin directory and point a
+sub domain to the virtual named host. The information on how to do
+this is here on the <A HREF="http://httpd.apache.org/docs/2.2/vhosts/">Apache
+Website</A></SPAN></FONT></P>
+<P ALIGN=LEFT><FONT SIZE=3><SPAN STYLE="font-weight: normal">U</SPAN></FONT>se
+Basic Authentication on the webpage. The information on how to do
+that is on the <A HREF="http://httpd.apache.org/docs/2.0/howto/auth.html">Apache
+Website. </A><FONT SIZE=4><B>Use callsigns as usernames</B></FONT> as
+the login name is what is used on the sent text chat callsign from
+the website and if no user name is present it goes into demo mode and
+all control buttons are disabled automaticly. This is to protect the
+network from non- Amateurs. It is up to you to make sure no
+non-Amateurs gain access to the Echolink system though your node.</P>
+<P>Edit the top Installation Default Settings section of nodemgmt.cgi
+and chat.cgi file 
+</P>
+<P>----snip-------</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">#-------------------------------------------------------------------</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">#
+Installation Default Settings</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">confname=VK5TRM-L
+# name of this conference must be in Upper Case</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">admin=VK5TRM
+# admin's callsign must be in Upper Case</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">qrz=yes
+# leave blank to disable QRZ lookups</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">chginfo=no
+# enable/disable Info/Location changes</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">tbdcmd=/usr/local/bin/tlbcmd
+# path to &quot;tbdcmd or tlbcmd&quot; executable</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">tlbchat=/usr/local/bin/tlbchat
+# path to &quot;tlbchat&quot; executable</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">commport=/dev/ttyS1  
+# Comm Port for Temperature sensor & Radio control - set for option 2</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">#-------------------------------------------------------------------</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P>----snip-------</P>
+<P ALIGN=CENTER><FONT SIZE=4><B>Nodemgmt.cgi with Email from Echolink
+Text Box enabled </B></FONT>
+</P>
+<P>Set up your email SMTP server in the top section of the SendEmail
+Script in the ##Network section of the script. You should only need
+to set you SMTP server and port. Be careful not to delete any of the
+<B>, </B>and <B>'</B></P>
+<P>----snip-------</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">##
+Network</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">&quot;server&quot;
+=&gt; 'localhost', ## Default SMTP server <B>(set your server here
+between the ' ')</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">&quot;port&quot;
+=&gt; 25, ## Default port <B>(set you SMTP server port here between
+the ' '</B>)</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">&quot;bindaddr&quot;
+=&gt; '', ## Default local bind address</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">&quot;alarm&quot;
+=&gt; '', ## Default timeout for connects and reads, this gets set
+from $opt{'timeout'}</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">&quot;tls_client&quot;
+=&gt; 0, ## If TLS is supported by the client (us)</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">&quot;tls_server&quot;
+=&gt; 0, ## If TLS is supported by the remote SMTP server</FONT></FONT></P>
+<P><BR><BR>
+</P>
+<P>----snip-------</P>
+<P>Also edit the SMTP user name and password in the SendEmail script
+further down</P>
+<P>----snip-------</P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">##
+eSMTP</FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">&quot;username&quot;
+=&gt; '', ## Username used in SMTP Auth <B>(set your SMPT server user
+name here between the ' ')</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">&quot;password&quot;
+=&gt; '', ## Password used in SMTP Auth <B>(set you SMPT server
+password here between the ' ')</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">&quot;tls&quot;
+=&gt; 'auto', ## Enable or disable TLS support. Options: auto, yes,
+no</FONT></FONT></P>
+<P><BR><BR>
+</P>
+<P>----snip-------</P>
+<P ALIGN=CENTER><FONT SIZE=4><B>Radio Control (radiocontrol.php)</B></FONT></P>
+<P>Edit radiocontrol.php if you want to use it and have the hardware
+for it. Set <B>port device, port speed, data bits, stopbit, and flow
+control </B>according to the manual that came with the hardware <br> This needs to be done in 2 places of the script</P>
+<P>----snip-------<BR><BR>$serial-&gt;deviceSet(&quot;/dev/ttyUSB0&quot;);<BR><BR>//
+We can change the baud rate, parity, length, stop bits, flow
+control<BR>$serial-&gt;confBaudRate(9600);<BR>$serial-&gt;confParity(&quot;none&quot;);<BR>$serial-&gt;confCharacterLength(8);<BR>$serial-&gt;confStopBits(1);<BR>$serial-&gt;confFlowControl(&quot;none&quot;);</P>
+<P>----snip-------</P>
+<P ALIGN=CENTER><FONT SIZE=4><B>All setups:</B></FONT></P>
+<P ALIGN=CENTER><FONT SIZE=4><B>Log Viewer (logviewer.cgi)</B></FONT></P>
+<P>Edit logviewer.cgi and set the path to your TLB log file.</P>
+<P>----snip-------<BR><BR>$LOG = "/home/tlb/tlb.log"<BR><BR></P>
+<P>----snip-------</P>
+
+<P>Point you web browser to http://(server name and cgi-bin dir
+path)/nodemgmt.cgi</P>
+<P><BR><BR>
+</P>
+<H1>What all the commands do (Help):</H1>
+<P><BR><BR>
+</P>
+<P>You'll see a <A HREF="#list"><B>colour-coded list</B></A> of
+station call signs and a row of <A HREF="#control"><B>control buttons</B></A>
+corresponding to each station. When you click on a control button
+then and click the &quot;Enter&quot; button, your command will take
+effect immediately. 
+</P>
+<P>You can also <A HREF="#outb"><B>connect more stations</B></A> to
+the conference, or <A HREF="#msg"><B>send and received text messages</B></A>
+using this panel. 
+</P>
+<P>The status of your commands will be shown on the panel just above
+the station list.</P>
+<P><B>Note:</B> This panel was designed for a screen resolution of
+1024x768. 
+</P>
+<P><A NAME="list"></A><U><B>The Station List</B></U> 
+</P>
+<P>The call signs are highlighted with color to give you an
+indication of each station's status. Here are the details: 
+</P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0cm"><B>Normal</B>: Just a normal
+	Echolink station, nothing special about it. It may be a repeater, an
+	RF link or a user on a PC. 
+	</P>
+	<LI><P STYLE="margin-bottom: 0cm"><FONT COLOR="#ffa500"><B>Admin</B></FONT>:
+	The station is logged in to this conference server as an
+	<I>Administrator</I> or a <I>Sysop</I>. 
+	</P>
+	<LI><P STYLE="margin-bottom: 0cm"><FONT COLOR="#0000ff"><B>Conf</B></FONT>:
+	The station is itself a conference, either a <I>TBD server</I>, like
+	this one, or an Echolink station with multiple connections. 
+	</P>
+	<LI><P STYLE="margin-bottom: 0cm"><FONT COLOR="#008000"><B>Perm</B></FONT>:
+	A <I>permanent connection</I> is the result of an <A HREF="#outb"><B>outbound
+	connect</B></A> request. If the station's connection times out, the
+	conference will attempt to re-connect. 
+	</P>
+	<LI><P STYLE="margin-bottom: 0cm"><FONT COLOR="#a52a2a"><B>Muted</B></FONT>:
+	The station is <I>muted</I>, it will hear any activity on the
+	conference but is not able to transmit. 
+	</P>
+	<LI><P STYLE="margin-bottom: 0cm"><FONT COLOR="#808080"><B>Kicked</B></FONT>:
+	The station has been disconnected by the conference. 
+	</P>
+	<LI><P STYLE="margin-bottom: 0cm"><FONT COLOR="#800080"><B>Monitor</B></FONT>:
+	The station can transmit to the conference, but the conference will
+	not transmit to the station. 
+	</P>
+	<LI><P STYLE="margin-bottom: 0cm"><FONT COLOR="#00ffff"><B>Lurking</B></FONT>:
+	The station invoked the <I>lurk</I> command to remove his call sign
+	from the station lists on the Echolink clients, but is still
+	connected and can participate in the conference as if it were a
+	<I>normal</I> user. 
+	</P>
+	<LI><P STYLE="margin-bottom: 0cm"><FONT COLOR="#ff0000"><B>Talking</B></FONT>:
+	The station is currently transmitting to the conference. 
+	</P>
+	<LI><P><FONT COLOR="#ffc0cb"><B>Playing</B></FONT>: The station is
+	playing a file; either listening to a bulletin or using the .test
+	command to play back its own audio. If the conference is set up to
+	play a &quot;welcome&quot;' echo &quot;message to connecting
+	stations, they'll show up in pink momentarily&quot; just after they
+	connect. 
+	</P>
+</UL>
+<P><A NAME="control"></A><U><B>What the Control Buttons do</B></U> 
+</P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0cm"><B>Disc</B>: Disconnects a station
+	from the conference. The station can re-connect back in if it wants
+	to. 
+	</P>
+	<LI><P STYLE="margin-bottom: 0cm"><B>Disc/Ban</B>: Disconnects a
+	station and <I>bans</I> it so it cannot re-connect. Bans can only be
+	reversed by the conference 
+	</P>
+	<LI><P STYLE="margin-bottom: 0cm"><B>Mute</B>: Stops a station from
+	transmitting to the conference. The station can disconnect and
+	re-connect to un-mute itself. 
+	</P>
+	<LI><P STYLE="margin-bottom: 0cm"><B>Mute-P</B>: Mutes a station
+	<I>persistently</I>, that is, the station will stay muted even if it
+	disconnects and re-connects. 
+	</P>
+	<LI><P STYLE="margin-bottom: 0cm"><B>Monitor</B>: The opposite of
+	&quot;Mute&quot;. The conference will receive what the station
+	transmits, but cannot talk back to that station. This is useful for
+	monitoring nets and space shuttle missions. If a repeater station
+	needs to disconnect, it will not disrupt the rest of the net. 
+	</P>
+	<LI><P STYLE="margin-bottom: 0cm"><B>Reset</B>: This function
+	cancels the &quot;Mute&quot; and &quot;Monitor&quot; functions, and
+	also <I>de-lurks</I> (un-hides) a station which is <I>lurking</I>
+	(connected, but not appearing in the Echolink echo &quot;clients'
+	station lists).&quot; echo &quot;</P>
+	<LI><P STYLE="margin-bottom: 0cm"><B>About</B>: Shows the station
+	operator's information. 
+	</P>
+	<LI><P><B>QRZ</B>: Performs a callsign lookup on the QRZ database.
+	The QRZ information will pop up in a separate window. The conference
+	administrator can disable QRZ lookups. 
+	</P>
+</UL>
+<P><A NAME="outb"></A><U><B>Outbound Connections</B></U> 
+</P>
+<P>You may connect a station to the conference by typing the
+station's&quot; call sign into the text field following &quot;<B>Connect
+a station:</B>&quot;' and clicking the &quot;<B>Enter</B>&quot;
+button. 
+</P>
+<P>If the station does not immediately show up in the station list,
+it is either off-line or not accepting connections. 
+</P>
+<P><A NAME="msg"></A><U><B>Send a Text Message</B></U> 
+</P>
+<P>Whatever you type into this text field will be displayed in the
+text box of all connected Echolink clients' 
+</P>
+<P><U><B>Received a Text Messages</B></U>' 
+</P>
+<P>Displays all the EchoLink text messages received by your station.
+It is refreshed automaticly even if the main page refresh is set to
+&quot;None &quot; . 
+</P>
+<P><U><B>Change Location String</B></U> 
+</P>
+<P>You can modify the text shown next to the conference server's name
+on&quot; the Echolink client. Your change will take effect until the
+conference server is restarted. 
+</P>
+<P><U><B>Set/Change Conference Status:</B></U> 
+</P>
+<P>Busy - Puts your node status to busy so as to prevent in-bound connections<BR>
+   Available - Turns your node status to available and allows in-bound connections
+</P>
+<P><U><B>Radio Control:</B></U> 
+</P>
+<P>The radio control changes channels by using the control lines of a Motorola GM 300 radio<BR>
+   
+By pressing the numbered on buttons on the page you switch on the relays of the K190 to select the channel number required<BR>	
+By pressing the Radio off button on the page you switch off all the relays of the K190<BR>
+There is also a status under the buttons with reads the currant status from the K190  	     
+		      
+</P>
+<P><U><B>Refresh Interval</B></U> 
+</P>
+<P>For your convenience, the panel may be configured to refresh
+itself &quot;at certain time intervals, so you'll always have an
+up-to-date status&quot; display. Any commands or messages that you
+issue will reset the automatic refresh interval back to &quot;None&quot;
+(which is the default when you first load the utility). 
+</P>
+<P>To change the refresh interval, click the radio button
+corresponding to your desired rate (for example, every 30 seconds)
+and click the &quot;Set / Refresh&quot; button. 
+</P>
+
+<P STYLE="margin-bottom: 0cm">You may click the &quot;Set / Refresh&quot;
+any time to refresh the information in the panel, even when automatic
+refresh is disabled (set to &quot;None&quot;). 
+</P>
+<P><U><B>Radio Channel Data:</B></U> 
+</P>
+<P>Opens a Radio channel data file in a new tab of your browser 
+You need to edit this file and save it using any word proccessing program. Most surpport html editing in some form or another 
+</P>
+<P><U><B>Node Log book:</B></U> 
+</P>
+<P>Opens the node log book in a new tab of your browser using the logviewer.cgi
+</P>
+<HR>
+<P>Acknowlgements</P>
+<P>This Web interface uses modified code from the following sources</P>
+<P>KC4YOZ's Conference interface CGI (usermngmt.cgi)</P>
+<P>Distributed under the terms of the</P>
+<P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>GNU General
+Public License</FONT></FONT></P>
+<P><BR><BR>
+</P>
+<P>Most Simple Ajax Chat Script - (chris[at]linuxuser.at) 
+</P>
+<P>Distributed under the terms of the</P>
+<P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>GNU General
+Public License</FONT></FONT></P>
+<P><BR><BR>
+</P>
+<P>sendEmail - Brandon Zehm &lt;caspian[at]dotconf.net&gt;</P>
+<P>Distributed under the terms of the</P>
+<P>GNU General Public License</P>
+<P><BR><BR>
+</P>
+<P><FONT FACE="Times New Roman, serif">php serial by R&eacute;my
+Sanchez &lt;thenux[at]gmail.com&gt;</FONT></P>
+<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 11pt">Distributed
+under the terms of the</FONT></FONT></P>
+<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 11pt">GNU
+General Public License</FONT></FONT></P>
+<P><BR><BR>
+</P>
+<P><FONT FACE="Times New Roman, serif">Copyright (C) 2010 Robert
+VK5TRM email: vk5trm[at]gmail.com</FONT></P>
+<P><FONT FACE="Times New Roman, serif">This program is free software:
+you can redistribute it and/or modify</FONT></P>
+<P><FONT FACE="Times New Roman, serif">it under the terms of the GNU
+General Public License as published by</FONT></P>
+<P><FONT FACE="Times New Roman, serif">the Free Software Foundation,
+either version 3 of the License, or</FONT></P>
+<P><FONT FACE="Times New Roman, serif">(at your option) any later
+version.</FONT></P>
+<P><FONT FACE="Times New Roman, serif">This program is distributed in
+the hope that it will be useful,</FONT></P>
+<P><FONT FACE="Times New Roman, serif">but WITHOUT ANY WARRANTY;
+without even the implied warranty of</FONT></P>
+<P><FONT FACE="Times New Roman, serif">MERCHANTABILITY or FITNESS FOR
+A PARTICULAR PURPOSE. See the</FONT></P>
+<P><FONT FACE="Times New Roman, serif">GNU General Public License for
+more details at http://www.gnu.org/licenses/</FONT></P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+</BODY>
+</HTML>
